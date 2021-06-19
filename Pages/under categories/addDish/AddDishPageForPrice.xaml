@@ -1,0 +1,36 @@
+﻿<Page x:Class="Restaurant.Pages.under_categories.addDish.AddDishPageForPrice"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Restaurant.Pages.under_categories.addDish"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddDishPageForPrice">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            
+            <StackPanel >
+                <Label x:Name="FirstNameTextBox" Content="{Binding name}"/>
+                
+            </StackPanel>
+            <StackPanel >
+                <Button x:Name="DecreaseAmountButton"  Content="-" Click="DecreaseAmountButton_Click"/>
+                <TextBox x:Name="AmountTextBox"  Text="1" Width="100" TextChanged="AmountTextBox_TextChanged" HorizontalAlignment="Center"/>
+                <Button x:Name="IncreaseAmountButton"  Content="+" Click="IncreaseAmountButton_Click"/>
+            </StackPanel>
+            <StackPanel >
+                <TextBlock x:Name="PriceTextBox"  Height="15" Width="57"/>
+
+            </StackPanel>
+
+
+        </StackPanel>
+        <Button x:Name="SaveButton"  HorizontalAlignment="Center" Click="SaveButton_Click" Margin="357,382,381,46">Добавить</Button>
+    </Grid>
+</Page>
