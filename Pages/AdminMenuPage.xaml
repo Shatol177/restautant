@@ -16,7 +16,6 @@
             <Button x:Name="BtnClientsCards" Style="{StaticResource MenuButton}" Content="Clients cards" Click="BtnCardClients_Click" Margin="85,200,515,200"></Button>
             <Button x:Name="BtnAddOrder" Style="{StaticResource MenuButton}" Content="Add Order" Click="BtnAdd_Click" Margin="140,317,460,83"></Button>
             <Button x:Name="BtnPrint" Style="{StaticResource MenuButton}" Content="Print" Click="BtnPrint_Click" Margin="460,317,140,83"></Button>
-        <Button x:Name="BtnDishStatic" Style="{StaticResource MenuButton}" Content="DishStatistick" Click="BtnDishStatic_Click" Margin="300,390,300,10"></Button>
         
     </Grid>
 </Page>

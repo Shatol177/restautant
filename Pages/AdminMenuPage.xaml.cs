@@ -62,10 +62,5 @@ namespace Restaurant.Pages
         {
             this.NavigationService.Navigate(new AddDishePage());
         }
-
-        private void BtnDishStatic_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new DishStatistics());
-        }
     }
 }

@@ -34,6 +34,5 @@ namespace Restaurant.Model
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Tables> Tables { get; set; }
         public virtual DbSet<Wraiters> Wraiters { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

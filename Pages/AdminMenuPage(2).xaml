@@ -1,0 +1,22 @@
+﻿<Page x:Class="Restaurant.Pages.AdminMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Restaurant.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Admin Menu">
+
+    <Grid>
+            <Button x:Name="BtnAdmins" Style="{StaticResource MenuButton}" Content="Admins" Click="BtnAdmin_Click" Margin="140,96,460,304"></Button>
+             <Button x:Name="BtnMenegers" Style="{StaticResource MenuButton}" Content="Menegers" Click="BtnMenegers_Click" Margin="460,96,140,304"></Button>
+             <Button x:Name="BtnAddDish" Style="{StaticResource MenuButton}" Content="Добавить блюдо" Click="BtnDish_Click" Margin="300,200"></Button>
+            <Button x:Name="BtnEmployeeCards" Style="{StaticResource MenuButton}" Content="Employee cards" Click="BtnCardEmployee_Click" Margin="515,200,85,200"></Button>
+            <Button x:Name="BtnClientsCards" Style="{StaticResource MenuButton}" Content="Clients cards" Click="BtnCardClients_Click" Margin="85,200,515,200"></Button>
+            <Button x:Name="BtnAddOrder" Style="{StaticResource MenuButton}" Content="Add Order" Click="BtnAdd_Click" Margin="140,317,460,83"></Button>
+            <Button x:Name="BtnPrint" Style="{StaticResource MenuButton}" Content="Print" Click="BtnPrint_Click" Margin="460,317,140,83"></Button>
+        <Button x:Name="BtnDishStatic" Style="{StaticResource MenuButton}" Content="DishStatistick" Click="BtnDishStatic_Click" Margin="300,390,300,10"></Button>
+        
+    </Grid>
+</Page>

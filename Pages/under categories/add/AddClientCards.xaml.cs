@@ -38,18 +38,11 @@ namespace Restaurant.Pages.under_categories.add
             bool resultEnt = false;
             UserController objUser = new UserController();
             CheckController objEmail = new CheckController();
-            CheckController objnull = new CheckController();
             bool resultname = objUser.CheckName(FirstNameTextBox.Text);
             bool resultLogin = objUser.CheckLogin(login.Text);
             bool resultPass = objUser.CheckPassword(passwordText.Text);
             bool resulEmail = objEmail.CorrectEmail(EmailTextBox.Text);
             bool resulEmail2 = objUser.CheckEmail(EmailTextBox.Text);
-
-            bool TextNullname = objnull.TextNull(FirstNameTextBox.Text);
-            bool TextNullLogin = objnull.TextNull(login.Text);
-            bool TextNullPass = objnull.TextNull(passwordText.Text);
-            bool TextNullEmail = objnull.TextNull(EmailTextBox.Text);
-           
 
             if (resultLogin == true)
             {
@@ -67,28 +60,6 @@ namespace Restaurant.Pages.under_categories.add
             if (resulEmail == false)
             {
                 MessageBoxResult result = MessageBox.Show("не правильный email", "", MessageBoxButton.OK);
-                return;
-            }
-
-            if (TextNullname == false)
-            {
-                MessageBoxResult result = MessageBox.Show("Введите данные", "", MessageBoxButton.OK);
-                return;
-
-            }
-            if (TextNullLogin == false)
-            {
-                MessageBoxResult result = MessageBox.Show("Введите данные", "", MessageBoxButton.OK);
-                return;
-            }
-            if (TextNullPass == false)
-            {
-                MessageBoxResult result = MessageBox.Show("Введите данные", "", MessageBoxButton.OK);
-                return;
-            }
-            if (TextNullEmail == false)
-            {
-                MessageBoxResult result = MessageBox.Show("Введите данные", "", MessageBoxButton.OK);
                 return;
             }
 

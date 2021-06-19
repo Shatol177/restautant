@@ -28,9 +28,9 @@ namespace Restaurant.Model
         public string email_client { get; set; }
         public Nullable<int> client_id { get; set; }
     
-        public virtual Clients Clients { get; set; }
         public virtual Dishes Dishes1 { get; set; }
         public virtual Tables Tables { get; set; }
         public virtual Wraiters Wraiters { get; set; }
+        public virtual Clients Clients { get; set; }
     }
 }

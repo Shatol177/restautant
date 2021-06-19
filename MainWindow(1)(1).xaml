@@ -1,0 +1,32 @@
+﻿<Window x:Class="Restaurant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant"
+        mc:Ignorable="d"
+        Title="{Binding ElementName=MainFrame, Path=Content.Title}" Height="700" Width="1300"  WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Button x:Name="BtnBack" Click="BtnBack_Click" HorizontalAlignment="Right" Style="{StaticResource NavigateButton}">Back</Button>
+                <TextBlock  Style="{StaticResource TitleTextBlock}" Text="{Binding ElementName=MainFrame, Path=Content.Title}"></TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <Image Source="Resources/logo.png" Margin="10"></Image>
+                    <TextBlock VerticalAlignment="Center">DFR delicious food restaurant</TextBlock>
+                </StackPanel>
+            </Grid>
+            <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"></Frame>
+            <Rectangle Fill="{StaticResource ColorMain}" Grid.Row="2"></Rectangle>
+        </Grid>
+    </Grid>
+    
+ 
+            
+    
+</Window>

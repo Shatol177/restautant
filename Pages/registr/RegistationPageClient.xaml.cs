@@ -36,11 +36,17 @@ namespace Restaurant.Pages.registr
             bool resultEnt = false;
             UserController objUser = new UserController();
             CheckController objEmail = new CheckController();
+            CheckController objNull = new CheckController();
             bool resultname = objUser.CheckName(NameTextBox.Text);
             bool resultLogin = objUser.CheckLogin(LoginTextBox.Text);
             bool resultPass = objUser.CheckPassword(PasswordTextBox.Text);
             bool resulEmail = objEmail.CorrectEmail(EmailnTextBox.Text);
             bool resulEmail2 = objUser.CheckEmail(EmailnTextBox.Text);
+
+            bool checkNllLogin = objNull.TextNull(LoginTextBox.Text);
+            bool checkNlEmail = objNull.TextNull(EmailnTextBox.Text);
+            bool checkNlPass = objNull.TextNull(PasswordTextBox.Text);
+            bool checkNlName = objNull.TextNull(NameTextBox.Text);
 
             if (resultLogin == true)
             {
@@ -60,6 +66,36 @@ namespace Restaurant.Pages.registr
                 MessageBoxResult result = MessageBox.Show("не правильный email", "", MessageBoxButton.OK);
                 return;
             }
+
+
+            if(checkNllLogin == false)
+            {
+                MessageBoxResult result = MessageBox.Show("Пустое значение логина", "", MessageBoxButton.OK);
+                return;
+            }
+            if (checkNlEmail == false)
+            {
+                MessageBoxResult result = MessageBox.Show("Пустое значение email", "", MessageBoxButton.OK);
+                return;
+            }
+            if (checkNlName == false)
+            {
+                MessageBoxResult result = MessageBox.Show("Пустое значение name", "", MessageBoxButton.OK);
+                return;
+            }
+            if (checkNlPass == false)
+            {
+                MessageBoxResult result = MessageBox.Show("Пустое значение пароля", "", MessageBoxButton.OK);
+                return;
+            }
+
+
+
+
+
+
+
+
             Clients add = new Clients()
             {
                 first_name = NameTextBox.Text,

@@ -1,0 +1,798 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище RestoranModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" />
+          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="int" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="int" />
+        </EntityType>
+        <EntityType Name="Dishes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="int" />
+          <Property Name="ingedient" Type="varchar" MaxLength="50" />
+          <Property Name="number_of_orders" Type="int" />
+        </EntityType>
+        <EntityType Name="Managers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" />
+          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="dishe_id" Type="int" />
+        </EntityType>
+        <EntityType Name="receipt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="price" Type="int" />
+          <Property Name="number_receipt" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="wraiter" Type="varchar" MaxLength="50" />
+          <Property Name="table_number" Type="int" />
+          <Property Name="wraiter_id" Type="int" />
+          <Property Name="dishes_id" Type="int" />
+          <Property Name="dishes" Type="varchar" MaxLength="50" />
+          <Property Name="table_id" Type="int" />
+          <Property Name="col_dish" Type="int" />
+          <Property Name="email_client" Type="varchar" MaxLength="50" />
+          <Property Name="client_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="role" />
+          </Key>
+          <Property Name="role" Type="int" Nullable="false" />
+          <Property Name="role_name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tables">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="addres" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="order_id" Type="int" />
+          <Property Name="wraiter_id" Type="int" />
+          <Property Name="client_id" Type="int" />
+          <Property Name="receipt_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Wraiters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" />
+          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="int" />
+        </EntityType>
+        <Association Name="FK_Admins_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Admins" Type="Self.Admins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="role" />
+            </Principal>
+            <Dependent Role="Admins">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="role" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Managers_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Managers" Type="Self.Managers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="role" />
+            </Principal>
+            <Dependent Role="Managers">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Dishes">
+          <End Role="Dishes" Type="Self.Dishes" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dishes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="dishe_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_receipt_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="receipt" Type="Self.receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="receipt">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_receipt_Dishes">
+          <End Role="Dishes" Type="Self.Dishes" Multiplicity="0..1" />
+          <End Role="receipt" Type="Self.receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dishes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="receipt">
+              <PropertyRef Name="dishes_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_receipt_Tables">
+          <End Role="Tables" Type="Self.Tables" Multiplicity="0..1" />
+          <End Role="receipt" Type="Self.receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tables">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="receipt">
+              <PropertyRef Name="table_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_receipt_Wraiters">
+          <End Role="Wraiters" Type="Self.Wraiters" Multiplicity="0..1" />
+          <End Role="receipt" Type="Self.receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wraiters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="receipt">
+              <PropertyRef Name="wraiter_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tables_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="Tables" Type="Self.Tables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tables">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tables_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="Tables" Type="Self.Tables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tables">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tables_Wraiters">
+          <End Role="Wraiters" Type="Self.Wraiters" Multiplicity="0..1" />
+          <End Role="Tables" Type="Self.Tables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wraiters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tables">
+              <PropertyRef Name="wraiter_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wraiters_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Wraiters" Type="Self.Wraiters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="role" />
+            </Principal>
+            <Dependent Role="Wraiters">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище RestoranModelContainer">
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dishes" EntityType="Self.Dishes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Managers" EntityType="Self.Managers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="receipt" EntityType="Self.receipt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tables" EntityType="Self.Tables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wraiters" EntityType="Self.Wraiters" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Admins_Roles" Association="Self.FK_Admins_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Admins" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Roles" Association="Self.FK_Clients_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Managers_Roles" Association="Self.FK_Managers_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Managers" EntitySet="Managers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Dishes" Association="Self.FK_Orders_Dishes">
+            <End Role="Dishes" EntitySet="Dishes" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_receipt_Clients" Association="Self.FK_receipt_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="receipt" EntitySet="receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_receipt_Dishes" Association="Self.FK_receipt_Dishes">
+            <End Role="Dishes" EntitySet="Dishes" />
+            <End Role="receipt" EntitySet="receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_receipt_Tables" Association="Self.FK_receipt_Tables">
+            <End Role="Tables" EntitySet="Tables" />
+            <End Role="receipt" EntitySet="receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_receipt_Wraiters" Association="Self.FK_receipt_Wraiters">
+            <End Role="Wraiters" EntitySet="Wraiters" />
+            <End Role="receipt" EntitySet="receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tables_Clients" Association="Self.FK_Tables_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Tables" EntitySet="Tables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tables_Orders" Association="Self.FK_Tables_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Tables" EntitySet="Tables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tables_Wraiters" Association="Self.FK_Tables_Wraiters">
+            <End Role="Wraiters" EntitySet="Wraiters" />
+            <End Role="Tables" EntitySet="Tables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wraiters_Roles" Association="Self.FK_Wraiters_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Wraiters" EntitySet="Wraiters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestoranModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role" Type="Int32" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Admins_Roles" FromRole="Admins" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role" Type="Int32" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Clients_Roles" FromRole="Clients" ToRole="Roles" />
+          <NavigationProperty Name="receipt" Relationship="Self.FK_receipt_Clients" FromRole="Clients" ToRole="receipt" />
+          <NavigationProperty Name="Tables" Relationship="Self.FK_Tables_Clients" FromRole="Clients" ToRole="Tables" />
+        </EntityType>
+        <EntityType Name="Dishes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="ingedient" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="number_of_orders" Type="Int32" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Dishes" FromRole="Dishes" ToRole="Orders" />
+          <NavigationProperty Name="receipt" Relationship="Self.FK_receipt_Dishes" FromRole="Dishes" ToRole="receipt" />
+        </EntityType>
+        <EntityType Name="Managers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role" Type="Int32" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Managers_Roles" FromRole="Managers" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="dishe_id" Type="Int32" />
+          <NavigationProperty Name="Dishes" Relationship="Self.FK_Orders_Dishes" FromRole="Orders" ToRole="Dishes" />
+          <NavigationProperty Name="Tables" Relationship="Self.FK_Tables_Orders" FromRole="Orders" ToRole="Tables" />
+        </EntityType>
+        <EntityType Name="receipt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="number_receipt" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="wraiter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="table_number" Type="Int32" />
+          <Property Name="wraiter_id" Type="Int32" />
+          <Property Name="dishes_id" Type="Int32" />
+          <Property Name="dishes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="table_id" Type="Int32" />
+          <Property Name="col_dish" Type="Int32" />
+          <Property Name="email_client" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="client_id" Type="Int32" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_receipt_Clients" FromRole="receipt" ToRole="Clients" />
+          <NavigationProperty Name="Dishes1" Relationship="Self.FK_receipt_Dishes" FromRole="receipt" ToRole="Dishes" />
+          <NavigationProperty Name="Tables" Relationship="Self.FK_receipt_Tables" FromRole="receipt" ToRole="Tables" />
+          <NavigationProperty Name="Wraiters" Relationship="Self.FK_receipt_Wraiters" FromRole="receipt" ToRole="Wraiters" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="role" />
+          </Key>
+          <Property Name="role" Type="Int32" Nullable="false" />
+          <Property Name="role_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Admins" Relationship="Self.FK_Admins_Roles" FromRole="Roles" ToRole="Admins" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Clients_Roles" FromRole="Roles" ToRole="Clients" />
+          <NavigationProperty Name="Managers" Relationship="Self.FK_Managers_Roles" FromRole="Roles" ToRole="Managers" />
+          <NavigationProperty Name="Wraiters" Relationship="Self.FK_Wraiters_Roles" FromRole="Roles" ToRole="Wraiters" />
+        </EntityType>
+        <EntityType Name="Tables">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="addres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="order_id" Type="Int32" />
+          <Property Name="wraiter_id" Type="Int32" />
+          <Property Name="client_id" Type="Int32" />
+          <Property Name="receipt_id" Type="Int32" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Tables_Clients" FromRole="Tables" ToRole="Clients" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Tables_Orders" FromRole="Tables" ToRole="Orders" />
+          <NavigationProperty Name="receipt" Relationship="Self.FK_receipt_Tables" FromRole="Tables" ToRole="receipt" />
+          <NavigationProperty Name="Wraiters" Relationship="Self.FK_Tables_Wraiters" FromRole="Tables" ToRole="Wraiters" />
+        </EntityType>
+        <EntityType Name="Wraiters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role" Type="Int32" />
+          <NavigationProperty Name="receipt" Relationship="Self.FK_receipt_Wraiters" FromRole="Wraiters" ToRole="receipt" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_Wraiters_Roles" FromRole="Wraiters" ToRole="Roles" />
+          <NavigationProperty Name="Tables" Relationship="Self.FK_Tables_Wraiters" FromRole="Wraiters" ToRole="Tables" />
+        </EntityType>
+        <Association Name="FK_Admins_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Admins" Type="Self.Admins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="role" />
+            </Principal>
+            <Dependent Role="Admins">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="role" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_receipt_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="receipt" Type="Self.receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="receipt">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tables_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="Tables" Type="Self.Tables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tables">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Dishes">
+          <End Role="Dishes" Type="Self.Dishes" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dishes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="dishe_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_receipt_Dishes">
+          <End Role="Dishes" Type="Self.Dishes" Multiplicity="0..1" />
+          <End Role="receipt" Type="Self.receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dishes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="receipt">
+              <PropertyRef Name="dishes_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Managers_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Managers" Type="Self.Managers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="role" />
+            </Principal>
+            <Dependent Role="Managers">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tables_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="Tables" Type="Self.Tables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tables">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_receipt_Tables">
+          <End Role="Tables" Type="Self.Tables" Multiplicity="0..1" />
+          <End Role="receipt" Type="Self.receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tables">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="receipt">
+              <PropertyRef Name="table_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_receipt_Wraiters">
+          <End Role="Wraiters" Type="Self.Wraiters" Multiplicity="0..1" />
+          <End Role="receipt" Type="Self.receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wraiters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="receipt">
+              <PropertyRef Name="wraiter_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wraiters_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+          <End Role="Wraiters" Type="Self.Wraiters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="role" />
+            </Principal>
+            <Dependent Role="Wraiters">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tables_Wraiters">
+          <End Role="Wraiters" Type="Self.Wraiters" Multiplicity="0..1" />
+          <End Role="Tables" Type="Self.Tables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wraiters">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tables">
+              <PropertyRef Name="wraiter_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ARM_RestoranEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admins" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="Dishes" EntityType="Self.Dishes" />
+          <EntitySet Name="Managers" EntityType="Self.Managers" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="receipt" EntityType="Self.receipt" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Tables" EntityType="Self.Tables" />
+          <EntitySet Name="Wraiters" EntityType="Self.Wraiters" />
+          <AssociationSet Name="FK_Admins_Roles" Association="Self.FK_Admins_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Admins" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Roles" Association="Self.FK_Clients_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_receipt_Clients" Association="Self.FK_receipt_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="receipt" EntitySet="receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tables_Clients" Association="Self.FK_Tables_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Tables" EntitySet="Tables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Dishes" Association="Self.FK_Orders_Dishes">
+            <End Role="Dishes" EntitySet="Dishes" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_receipt_Dishes" Association="Self.FK_receipt_Dishes">
+            <End Role="Dishes" EntitySet="Dishes" />
+            <End Role="receipt" EntitySet="receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Managers_Roles" Association="Self.FK_Managers_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Managers" EntitySet="Managers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tables_Orders" Association="Self.FK_Tables_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Tables" EntitySet="Tables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_receipt_Tables" Association="Self.FK_receipt_Tables">
+            <End Role="Tables" EntitySet="Tables" />
+            <End Role="receipt" EntitySet="receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_receipt_Wraiters" Association="Self.FK_receipt_Wraiters">
+            <End Role="Wraiters" EntitySet="Wraiters" />
+            <End Role="receipt" EntitySet="receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wraiters_Roles" Association="Self.FK_Wraiters_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Wraiters" EntitySet="Wraiters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tables_Wraiters" Association="Self.FK_Tables_Wraiters">
+            <End Role="Wraiters" EntitySet="Wraiters" />
+            <End Role="Tables" EntitySet="Tables" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="RestoranModel.sysdiagrams" />
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RestoranModelContainer" CdmEntityContainer="ARM_RestoranEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="RestoranModel.Admins">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="RestoranModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dishes">
+            <EntityTypeMapping TypeName="RestoranModel.Dishes">
+              <MappingFragment StoreEntitySet="Dishes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="ingedient" ColumnName="ingedient" />
+                <ScalarProperty Name="number_of_orders" ColumnName="number_of_orders" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managers">
+            <EntityTypeMapping TypeName="RestoranModel.Managers">
+              <MappingFragment StoreEntitySet="Managers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="RestoranModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dishe_id" ColumnName="dishe_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="receipt">
+            <EntityTypeMapping TypeName="RestoranModel.receipt">
+              <MappingFragment StoreEntitySet="receipt">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="number_receipt" ColumnName="number_receipt" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="wraiter" ColumnName="wraiter" />
+                <ScalarProperty Name="table_number" ColumnName="table_number" />
+                <ScalarProperty Name="wraiter_id" ColumnName="wraiter_id" />
+                <ScalarProperty Name="dishes_id" ColumnName="dishes_id" />
+                <ScalarProperty Name="dishes" ColumnName="dishes" />
+                <ScalarProperty Name="table_id" ColumnName="table_id" />
+                <ScalarProperty Name="col_dish" ColumnName="col_dish" />
+                <ScalarProperty Name="email_client" ColumnName="email_client" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="RestoranModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="RestoranModel.Tables">
+              <MappingFragment StoreEntitySet="Tables">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="addres" ColumnName="addres" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="wraiter_id" ColumnName="wraiter_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="receipt_id" ColumnName="receipt_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wraiters">
+            <EntityTypeMapping TypeName="RestoranModel.Wraiters">
+              <MappingFragment StoreEntitySet="Wraiters">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RestoranModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

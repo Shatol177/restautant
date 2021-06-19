@@ -244,9 +244,6 @@
     <Compile Include="Model\Roles.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\sysdiagrams.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Tables.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

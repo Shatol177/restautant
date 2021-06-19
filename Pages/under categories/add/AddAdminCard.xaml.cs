@@ -35,29 +35,15 @@ namespace Restaurant.Pages.under_categories.add
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            CheckController objCheck = new CheckController();
-            bool NameNull = objCheck.TextNull(FirstNameTextBox.Text);
-            bool loginNull = objCheck.TextNull(login.Text);
-            bool passNull = objCheck.TextNull(password.Text);
-            if (NameNull == false)
-            {
-                MessageBoxResult result = MessageBox.Show("Введите данные", "", MessageBoxButton.OK);
-                return;
-
-            }
-            if (loginNull == false)
-            {
-                MessageBoxResult result = MessageBox.Show("Введите данные", "", MessageBoxButton.OK);
-                return;
-            }
-            if (passNull == false)
-            {
-                MessageBoxResult result = MessageBox.Show("Введите данные", "", MessageBoxButton.OK);
-                return;
-            }
+            bool resultEnt = false;
+            UserController objUser = new UserController();
+            CheckController objEmail = new CheckController();
+            bool resultname = objUser.CheckName(FirstNameTextBox.Text);
+            bool resultLogin = objUser.CheckLogin(login.Text);
+            bool resultPass = objUser.CheckPassword(password.Text);
 
 
-            if (loginNull == true)
+            if (resultLogin == true)
             {
                 MessageBoxResult result = MessageBox.Show("Такой логин уже есть", "", MessageBoxButton.OK);
                 return;

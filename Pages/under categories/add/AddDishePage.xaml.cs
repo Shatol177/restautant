@@ -1,5 +1,4 @@
-﻿using Restaurant.Controllers;
-using Restaurant.Model;
+﻿using Restaurant.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,32 +29,12 @@ namespace Restaurant.Pages.under_categories.add
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            CheckController objCheck = new CheckController();
-            bool NameNull = objCheck.TextNull(FirstNameTextBox.Text);
-            bool PriceNull = objCheck.TextNull(price.Text);
-            bool ingridNull = objCheck.TextNull(ingrid.Text);
-            if (NameNull == false)
-            {
-                MessageBoxResult result = MessageBox.Show("Введите данные", "", MessageBoxButton.OK);
-                return;
-
-            }
-            if (PriceNull == false)
-            {
-                MessageBoxResult result = MessageBox.Show("Введите данные", "", MessageBoxButton.OK);
-                return;
-            }
-            if (ingridNull == false)
-            {
-                MessageBoxResult result = MessageBox.Show("Введите данные", "", MessageBoxButton.OK);
-                return;
-            }
             Dishes add = new Dishes()
             {
                 name = FirstNameTextBox.Text,
                 price = Convert.ToInt32(price.Text),
-                ingedient = ingrid.Text,
-                number_of_orders = 0
+                ingedient = ingrid.Text
+                
             };
 
             db.Dishes.Add(add);

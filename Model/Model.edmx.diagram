@@ -4,29 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c358651e7ada4473ba48586932739f76" Name="Diagram1">
-        <EntityTypeShape EntityType="RestoranModel.Admins" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestoranModel.Clients" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestoranModel.Dishes" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestoranModel.Managers" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestoranModel.Orders" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestoranModel.receipt" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestoranModel.Roles" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestoranModel.Tables" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestoranModel.Wraiters" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
-        <AssociationConnector Association="RestoranModel.FK_Admins_Roles" ManuallyRouted="false" />
-        <AssociationConnector Association="RestoranModel.FK_Clients_Roles" ManuallyRouted="false" />
-        <AssociationConnector Association="RestoranModel.FK_receipt_Clients" ManuallyRouted="false" />
-        <AssociationConnector Association="RestoranModel.FK_Tables_Clients" ManuallyRouted="false" />
-        <AssociationConnector Association="RestoranModel.FK_Orders_Dishes" ManuallyRouted="false" />
-        <AssociationConnector Association="RestoranModel.FK_receipt_Dishes" ManuallyRouted="false" />
-        <AssociationConnector Association="RestoranModel.FK_Managers_Roles" ManuallyRouted="false" />
-        <AssociationConnector Association="RestoranModel.FK_Tables_Orders" ManuallyRouted="false" />
-        <AssociationConnector Association="RestoranModel.FK_receipt_Tables" ManuallyRouted="false" />
-        <AssociationConnector Association="RestoranModel.FK_receipt_Wraiters" ManuallyRouted="false" />
-        <AssociationConnector Association="RestoranModel.FK_Wraiters_Roles" ManuallyRouted="false" />
-        <AssociationConnector Association="RestoranModel.FK_Tables_Wraiters" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="RestoranModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+      <Diagram DiagramId="f95d0443795c412ca97aa294d828ccc9" Name="Diagram1">
+        <EntityTypeShape EntityType="ARM_RestoranModel.Admins" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARM_RestoranModel.Clients" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARM_RestoranModel.Dishes" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARM_RestoranModel.Managers" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARM_RestoranModel.Orders" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARM_RestoranModel.receipt" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARM_RestoranModel.Roles" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARM_RestoranModel.Tables" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ARM_RestoranModel.Wraiters" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="ARM_RestoranModel.FK_Admins_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="ARM_RestoranModel.FK_Clients_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="ARM_RestoranModel.FK_Tables_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="ARM_RestoranModel.FK_Orders_Dishes" ManuallyRouted="false" />
+        <AssociationConnector Association="ARM_RestoranModel.FK_receipt_Dishes" ManuallyRouted="false" />
+        <AssociationConnector Association="ARM_RestoranModel.FK_Managers_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="ARM_RestoranModel.FK_Tables_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="ARM_RestoranModel.FK_receipt_Tables" ManuallyRouted="false" />
+        <AssociationConnector Association="ARM_RestoranModel.FK_receipt_Wraiters" ManuallyRouted="false" />
+        <AssociationConnector Association="ARM_RestoranModel.FK_Wraiters_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="ARM_RestoranModel.FK_Tables_Wraiters" ManuallyRouted="false" />
+        <AssociationConnector Association="ARM_RestoranModel.FK_receipt_Clients" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
